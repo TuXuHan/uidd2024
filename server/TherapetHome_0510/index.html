@@ -1,0 +1,169 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheraPet</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="chat.css" />
+    <link rel="stylesheet" type="text/css" href="calendar.css" />
+    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="owlcarousel/assets/owl.theme.default.min.css"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+  </head>
+
+  <body class="body" bgcolor="#E9E1D4">
+    <div class="container_phone">
+      <div id="loginbox">
+        <div id="loginContainer">
+          <img src="image/logo.png" id="logo" class="logo" />
+          <h2 id="welcome">Welcome to Therapet.</h2>
+          <p id="greeting">We wish you a nice day!</p>
+          <button id="loginButton" onclick="toggleSignIn()">
+            Sign in with Google
+          </button>
+          <button id="logoutButton" style="display: none" onclick="signOut()">
+            Logout
+          </button>
+        </div>
+        <h2 id="displayName" style="display: none"></h2>
+        <div id="choosePetPage" style="display: none">
+          <p id="choose_word">
+            Please choose your own pet from the animals below.
+          </p>
+          <div id="animalImages" class="animal-container">
+            <img
+              src="image/bear.png"
+              alt="Bear"
+              onclick="selectAnimal('Bear')"
+            />
+            <img src="image/cat.png" alt="Cat" onclick="selectAnimal('Cat')" />
+            <img
+              src="image/hamster.png"
+              alt="Hamster"
+              onclick="selectAnimal('Hamster')"
+            />
+            <img
+              src="image/otter.png"
+              alt="Otter"
+              onclick="selectAnimal('Otter')"
+            />
+            <img
+              src="image/puppy.png"
+              alt="Puppy"
+              onclick="selectAnimal('Puppy')"
+            />
+            <img
+              src="image/rabbit.png"
+              alt="Rabbit"
+              onclick="selectAnimal('Rabbit')"
+            />
+          </div>
+          <button id="nextbutton" onclick="nextPage()">Next</button>
+        </div>
+        <div id="petNamingPage" style="display: none">
+          <h2>Your Chosen Pet</h2>
+          <img src="" alt="Chosen Pet" id="chosenPetImage" /><br />
+          <label for="petName">Name Your Pet:</label>
+          <input type="text" id="petName" placeholder="Enter Pet Name" />
+          <button id="nextbutton" onclick="savePetName()">Next</button>
+        </div>
+      </div>
+      <!-- login end -->
+      <div id="homebox">
+        <div id="mySidebar" class="sidebar">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+            >&times;</a
+          >
+          <a href="#">About us</a>
+          <a href="#">Contact us</a>
+          <a href="#" onclick="signOut()">Log out</a>
+        </div>
+        <nav class="nav">
+          <div class="nav_left">
+            <button id="openbtn" onclick="openSidebar()">&#9776;</button>
+            <button id="backhomebtn">▶</button>
+          </div>
+
+          <div class="nav_middle">
+            <img src="title_middle.png" />
+          </div>
+        </nav>
+
+        <div class="pages">
+          <div class="page page_home">
+            <img src="" alt="Pet" id="homePetImage" />
+          </div>
+
+          <div class="page page_chat">
+            <div class="chat_space">
+              <ul class="chatbox">
+                <li class="chat_box_footer"></li>
+              </ul>
+              <div class="chat_pet">
+                <img src="" alt="Pet" id="chatPetImage" />
+              </div>
+            </div>
+            <div id="chat_input">
+              <div class="textbar">
+                <textarea
+                  type="text"
+                  placeholder="Talk to your pet"
+                  spellcheck="false"
+                  rows="1"
+                  oninput="textbar_input()"
+                ></textarea>
+              </div>
+              <button type="submit" class="mic"></button>
+            </div>
+            <div class="chat_logo"></div>
+          </div>
+          <div class="page page_diary">
+            <div class="calendar"></div>
+            <div class="diary content"></div>
+            <!----------------------------------------------------------
+            <div id="inputForm">
+                <h3>Add Emotion & Diary Entry</h3>
+                <label for="entryDate">Date:</label>
+                <input type="date" id="entryDate">
+
+                <label for="emotionInput">Emotion:</label>
+                <input type="text" id="emotionInput">
+
+                <label for="diaryInput">Diary:</label>
+                <textarea id="diaryInput" rows="4"></textarea>
+
+                <button onclick="addEntry()">Add Entry</button>
+            </div>
+            ------------------------------------>
+            <div id="searchForm">
+              <h2>Search Emotion & Diary Entry</h2>
+              <div id="searchResult"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bar">
+          <div class="page_button pb_home"></div>
+          <div class="page_button pb_chat"></div>
+          <div class="page_button pb_diary"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+    <script src="chat.js"></script>
+    <script src="calendar.js"></script>
+
+    <!-- are these needed? maybe not-->
+    <script src="app.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="carousel/Fully-Responsive-Flexible-jQuery-Carousel-Plugin-slick/slick/slick.js"></script>
+  </body>
+</html>
