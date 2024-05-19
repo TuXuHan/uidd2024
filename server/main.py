@@ -37,5 +37,5 @@ async def search(prompt: Prompt):
 #  print(response.choices[0]['message']['content']) 
   return response.choices[0]['message']['content']  
 
-app.mount("/Home", StaticFiles(directory="TherapetHome", html=True))
+app.mount("/Home", StaticFiles(directory="TherapetHome_0510", html=True))
 app.mount("/AboutUs", StaticFiles(directory="../AboutUs", html=True))
