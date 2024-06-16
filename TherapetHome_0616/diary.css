@@ -1,0 +1,140 @@
+.taskUI-background {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 583px;
+  margin-top: 20px;
+  background-color: #AA9277;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-sheet {
+  /*display: none;*/
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff00;
+  overflow: visible;
+  transition: bottom 0.3s ease;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #8d7964;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.drag-handle {
+  width: 100px;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: grab;
+  margin: auto;
+}
+
+.date {
+  display: flex;
+  color: white;
+  text-align: left;
+  left: 2em;
+  top: 1.2em;
+  position: absolute;
+  font-size: 1.7em;
+  font-weight: 900;
+  line-height: 1.4em;
+  font-family: Arial, sans-serif;
+}
+
+.dailyTask,
+.dialyDiary,
+.emotionLine {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 0.3em;
+}
+
+.TaskImg,
+.DiaryImg,
+.LineImg {
+  display: block;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.dailyTask {
+  top: 14%;
+}
+
+.dialyDiary {
+  top: 16%;
+}
+
+.emotionLine {
+  top: 15%;
+}
+
+.TasksButton,
+.LineButton,
+.DiaryButton {
+  display: block;
+  width: 25%;
+  height: auto;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ButtonText {
+  position: absolute;
+  width: 25%;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+
+.overlay {
+  height: 100%;
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.popup {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  top: 15%;
+  left: 10%;
+  text-align: center;
+  border-radius: 5%;
+  background: rgb(176, 171, 84);
+}
+

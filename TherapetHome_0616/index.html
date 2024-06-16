@@ -1,0 +1,252 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheraPet</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="chat.css" />
+  <link rel="stylesheet" type="text/css" href="calendar.css" />
+  <link rel="stylesheet" type="text/css" href="diary.css" />
+  <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+</head>
+
+<body class="body" bgcolor="#E9E1D4">
+  <div class="container_phone">
+    <div id="loginbox">
+      <div id="loginContainer">
+        <img src="image/logo.png" id="logo" class="logo" />
+        <h2 id="welcome">Welcome to Therapet.</h2>
+        <p id="greeting">We wish you a nice day!</p>
+        <button id="loginButton" onclick="toggleSignIn()">
+          Sign in with Google
+        </button>
+        <button id="logoutButton" style="display: none" onclick="signOut()">
+          Logout
+        </button>
+      </div>
+      <h2 id="displayName" style="display: none"></h2>
+      <div id="choosePetPage" style="display: none">
+        <p id="choose_word">
+          Please choose your own pet from the animals below.
+        </p>
+        <div id="animalImages" class="animal-container">
+          <img src="image/bear.png" alt="Bear" onclick="selectAnimal('Bear')" />
+          <img src="image/cat.png" alt="Cat" onclick="selectAnimal('Cat')" />
+          <img src="image/hamster.png" alt="Hamster" onclick="selectAnimal('Hamster')" />
+          <img src="image/otter.png" alt="Otter" onclick="selectAnimal('Otter')" />
+          <img src="image/puppy.png" alt="Puppy" onclick="selectAnimal('Puppy')" />
+          <img src="image/rabbit.png" alt="Rabbit" onclick="selectAnimal('Rabbit')" />
+        </div>
+        <button id="nextbutton" onclick="nextPage()">Next</button>
+      </div>
+      <div id="petNamingPage" style="display: none">
+        <h2>Your Chosen Pet</h2>
+        <img src="" alt="Chosen Pet" id="chosenPetImage" /><br />
+        <label for="petName">Name Your Pet:</label>
+        <input type="text" id="petName" placeholder="Enter Pet Name" />
+        <button id="nextbutton" onclick="savePetName()">Next</button>
+      </div>
+    </div>
+    <!-- login end -->
+    <div id="homebox">
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+        <a href="#">About us</a>
+        <a href="#">Contact us</a>
+        <a href="#" onclick="signOut()">Log out</a>
+      </div>
+      <nav class="nav">
+        <div class="nav_left">
+          <button id="openbtn" onclick="openSidebar()">&#9776;</button>
+          <button id="backhomebtn">▶</button>
+        </div>
+
+        <div class="nav_middle">
+          <img src="title_middle.png" />
+        </div>
+      </nav>
+
+      <div class="pages">
+        <div class="page page_home">
+          <img src="" alt="Pet" id="homePetImage" />
+        </div>
+
+        <div class="page page_chat">
+          <div class="chat_space">
+            <ul class="chatbox">
+              <li class="chat_box_footer"></li>
+            </ul>
+            <div class="chat_pet">
+              <img src="" alt="Pet" id="chatPetImage" />
+            </div>
+          </div>
+          <div id="chat_input">
+            <div class="textbar">
+              <textarea type="text" placeholder="Talk to your pet" spellcheck="false" rows="1"
+                oninput="textbar_input()"></textarea>
+            </div>
+            <button type="submit" class="mic"></button>
+          </div>
+          <div class="chat_logo"></div>
+        </div>
+        <div class="page page_diary">
+          <div class="calendar"></div>
+
+          <div class="bottom-sheet">
+
+            <div class="sheet-header">
+              <div class="drag-handle"></div>
+            </div>
+            <div class="sheet-content">
+              <div class="taskUI-background">
+                <div class="date">June 11</div>
+                <div class="dailyTask">
+                  <img src='diary/DailyTasks.png' class='TaskImg'>
+                  <img src='diary/OrangeButton.png' class='TasksButton'>
+                  <t1 class='ButtonText'>2/3</t1>
+                </div>
+      
+                <div class="emotionLine">
+                  <img src='diary/EmotionLine.png' class='LineImg'>
+                  <img src='diary/BlueButton.png' class='LineButton'>
+                  <t1 class='ButtonText'>See all</t1>
+                </div>
+      
+                <div class="dialyDiary">
+                  <img src='diary/DailyDiary.png' class='DiaryImg'>
+                  <img src='diary/GreenButton.png' class='DiaryButton'>
+                  <t1 class='ButtonText'>Write</t1>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+          </div>
+          <!--
+            <div class="popup_container">
+              <div class="date"></div>
+            </div>   
+          
+<!--    <div class="taskUI">
+    
+            <div class="bottom-sheet">
+              
+              <div class="sheet-header"> 
+                <div class="drag-handle"></div> 
+              </div> 
+      
+              <div class="sheet-content">
+                <div class="taskUI-background">
+                  <div class="dailyTask">
+                    <div class="DT-background"></div>
+                    <div class="DT-bottom" onclick="OpenModal()">0/5</div>
+                    <div class="DT-text">Daily Task</div>
+                    <div class="DT-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM160 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v48h48c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H224v48c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V352H112c-8.8 0-16-7.2-16-16V304c0-8.8 7.2-16 16-16h48V240z"/></svg>
+                    </div>
+                  </div>
+              
+                  <div class="emotionLine">
+                    <div class="EL-background"></div>
+                    <div class="EL-bottom">See all</div>
+                    <div class="EL-text">Emotion Line</div>
+                    <div class="EL-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></i>
+                    </div>
+                  </div>
+              
+                  <div class="dialyDiary">
+                    <div class="DD-background"></div>
+                    <div class="DD-bottom">Writing</div>
+                    <div class="DD-text">Daily Diary</div>
+                    <div class="DD-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 43 43 0 96 0H384h32c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32v64c17.7 0 32 14.3 32 32s-14.3 32-32 32H384 96c-53 0-96-43-96-96V96zM64 416c0 17.7 14.3 32 32 32H352V384H96c-17.7 0-32 14.3-32 32zM208 112v48H160c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V224h48c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H272V112c0-8.8-7.2-16-16-16H224c-8.8 0-16 7.2-16 16z"/></svg>
+                    </div>
+                  </div>
+          
+                  <div class="april16">April 16</div>
+                </div>
+      
+              </div>
+            </div> 
+      
+            <div class="overlay" id="overlay">
+              <div class="popup">
+                <div onclick="CloseModal()" class="CloseIcon">&#10060;</div>
+                <div class="Container-deapBreath">
+                  <div class="icon-deapBreath">&#x1F624;</div>
+                  <div class="detail-deapBreath">Please Take a Deap Breath</div>
+                  <button class="go-deapBreath" onclick="GotoDB()">GO</button>
+            
+                </div>
+                
+              </div>
+            </div>
+      
+          </div>
+      
+        </div> -->      
+          <!----------------------------------------------------------
+            <div id="inputForm">
+                <h3>Add Emotion & Diary Entry</h3>
+                <label for="entryDate">Date:</label>
+                <input type="date" id="entryDate">
+
+                <label for="emotionInput">Emotion:</label>
+                <input type="text" id="emotionInput">
+
+                <label for="diaryInput">Diary:</label>
+                <textarea id="diaryInput" rows="4"></textarea>
+
+                <button onclick="addEntry()">Add Entry</button>
+            </div>
+            <div id="searchForm">
+              <h2>Search Emotion & Diary Entry</h2>
+              <div id="searchResult"></div>
+            </div>
+            ------------------------------------>
+        
+          </div>
+      </div>
+      <div class="bar">
+        <div class="page_button pb_home"></div>
+        <div class="page_button pb_chat"></div>
+        <div class="page_button pb_diary"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+  <script src="chat.js"></script>
+  <script src="diary.js"></script>
+  <script src="calendar.js"></script>
+  <script>
+    function OpenModal() {
+    let element = document.getElementById('overlay')
+    element.style.display = 'block'
+    }
+    function CloseModal() {
+    let element = document.getElementById('overlay')
+    element.style.display = 'none'
+    }
+    function GotoDB() {
+      window.open('https://www.youtube.com/watch?v=Dx112W4i5I0');
+    }
+  
+  </script>
+
+  <!-- are these needed? maybe not-->
+  <script src="app.js"></script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+  <script src="owlcarousel/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="carousel/Fully-Responsive-Flexible-jQuery-Carousel-Plugin-slick/slick/slick.js"></script>
+</body>
+
+</html>

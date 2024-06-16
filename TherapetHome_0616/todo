@@ -1,0 +1,17 @@
+todo:
+-home
+-login
+-diary
+-login
+-quest
+-database & server
+-chatAI
+
+
+
+doing:date name function progress {plans/problems}
+
+apr28 mosbby chat 40%{
+  save data to database
+  support multiple input -> one output?
+}
