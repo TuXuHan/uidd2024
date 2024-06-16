@@ -7,4 +7,4 @@
 - Your website url will be ```http://localhost:8000/Home/#```
 
 - Therapet_0616 is the new version
-- ```main_0616.py``` openAi problems fixed
+- ```main_0616.py``` openai problems fixed
