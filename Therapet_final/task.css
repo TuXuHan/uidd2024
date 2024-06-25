@@ -1,0 +1,191 @@
+/* --------------PopUp----------------- */
+.overlay {
+    height: 100%;
+  }
+  
+  .overlay {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+  }
+  
+  .popup {
+    position: absolute;
+    width: 30%;
+    height: 70%;
+    top: 15%;
+    left: 35%;
+    text-align: center;
+    border-radius: 5%;
+    background: rgb(176, 171, 84);
+  }
+  
+  .flex-2 {
+    width: 40%;
+    height: 120px;
+    background-color: #f08bc3;
+  }
+  
+  .CloseIcon{
+    cursor: pointer;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+  }
+  
+  .Container-deapBreath {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+  }
+  
+  .icon-deapBreath {
+    /* position: relative; */
+    justify-content: center;
+    align-items: center;
+    margin-left: 3%;
+    margin-top: 10%;
+    width: 12%;
+    height: 12%;
+    border-radius: 24px;
+    color: #fff;
+    font-weight:bolder;
+    text-align: center;
+    font-size: x-large;
+    display: flex;
+    align-items: center;  /* 垂直置中 */
+    justify-content: center;  /* 水平置中 */
+    flex-direction: column;
+    background-color: #e8e0d1;
+  }
+  
+  .detail-deapBreath {
+    /* position:relative; */
+    justify-content: center;
+    align-items: center;
+    margin-left: 3%;
+    margin-top: 10%;
+    width: 60%;
+    min-height: 10%;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;  /* 垂直置中 */
+    justify-content: center;  /* 水平置中 */
+    flex-direction: column;
+    font-weight: bolder;
+    background-color: #e8e0d1;
+  }
+  
+  .go-deapBreath {
+    /* position: relative; */
+    margin-left: 3%;
+    margin-top: 10%;
+    width: 12%;
+    height: 10%;
+    border-radius: 24px;
+    color: #fff;
+    font-weight:bolder;
+    text-align: center;
+    font-size: x-large;
+    display: flex;
+    align-items: center;  /* 垂直置中 */
+    justify-content: center;  /* 水平置中 */
+    flex-direction: column;
+    background-color: #c1baad;
+  }
+  
+  /* ---------------Youtube Window---------------------- */
+  .modal{
+    display: none;
+    position: fixed;
+    /* z-index: 100; */
+    left: 35%;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .meditation{
+    display: none;
+    position: fixed;
+    /* z-index: 100; */
+    left: 35%;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    /* color: #fff; */
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  
+  .container_video {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  @media (max-width: 56.25vh) {
+  
+    /*for phone view*/
+    .container_phone {
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 56.25vh) {
+  
+    /*for desktop view*/
+    .container_phone {
+      width: 56.25vh;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 2.5em;
+    font-family: Arial, sans-serif;
+  }
+  
+  .video {
+    width: 100%;
+  }
+  /* --------------PopUp----------------- */

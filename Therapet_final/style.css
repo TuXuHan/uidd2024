@@ -1,0 +1,470 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #E9E1D4 !important;
+}
+
+.container_phone {
+  display: block;
+  position: absolute;
+  overflow-y: hidden;
+  height: 100%;
+  margin: 0;
+}
+
+#homebox {
+  display: none;
+  overflow-y: hidden;
+}
+
+@media (max-width: 56.25vh) {
+
+  /*for phone view*/
+  .container_phone {
+    width: 100%;
+  }
+}
+
+@media (min-width: 56.25vh) {
+
+  /*for desktop view*/
+  .container_phone {
+    width: 56.25vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+nav {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 5%;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+}
+
+.nav_left {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  left: 10px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 5%;
+  left: 0;
+  background-color: #75644d;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#openbtn {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: black;
+  padding: 5px 8px;
+  border: none;
+  margin-bottom: 0;
+}
+
+#openbtn:hover {
+  background-color: #e9e1d4;
+}
+
+#backhomebtn {
+  display: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: black;
+  padding: 5px 8px;
+  border: none;
+  margin-bottom: 0;
+  transform: rotate(180deg)
+}
+
+#backhomebtn:hover {
+  background-color: #e9e1d4;
+}
+
+
+@media (max-width: 600px) {
+  .nav_left {
+    font-size: 0.5em;
+  }
+
+  .nav_middle img {
+    width: 30%;
+  }
+}
+
+.nav_middle img {
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translateY(-50%);
+}
+
+
+/* ul {
+  list-style: none;
+}
+
+.nav_left {
+  left: 2%;
+}
+
+ul.nav_left li {
+  position: relative;
+}
+
+ul.nav_left>li {
+  float: left;
+}
+
+ul.nav_left a {
+  color: black;
+  display: block;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+ul.nav_left li:hover>a {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+ul.nav_left ul {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 100%;
+  width: 7em;
+  padding-inline-start: 0;
+}
+
+ul.nav_left li:hover>ul {
+  display: block;
+}
+ */
+
+.page_home {
+  background-image: url('background/home_background.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.bar {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  height: 6%;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  background-color: #ffffff;
+  z-index: 6;
+  transform: translateY(0%);
+  transition: transform 1s 0.5s;
+}
+
+.page_button {
+  display: block;
+  height: 85%;
+  width: 100%;
+  text-align: center;
+}
+
+.pb_home {
+  background: url("page_logo/HOME1.png") no-repeat center;
+  background-size: contain;
+}
+
+.pb_chat {
+  background: url("page_logo/CHAT1.png") no-repeat center;
+  background-size: contain;
+}
+
+.pb_diary {
+  background: url("page_logo/DIARY1.png") no-repeat center;
+  background-size: contain;
+}
+
+.pages {
+  display: flex;
+  height: 95%;
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+.pages::-webkit-scrollbar {
+  display: none;
+}
+
+.page {
+  display: block;
+  height: 100%;
+  width: 100%;
+  /*overflow-y: auto;*/
+  margin: 0;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.page::-webkit-scrollbar {
+  display: none;
+}
+
+.page_home {
+  background-color: darksalmon;
+}
+
+#homePetImage {
+  position: absolute;
+  height: 40%;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.page_diary {
+  background-color: #f7efe1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup_container {
+  display: none;
+  width: 100%;
+  height: 50%;
+  background-color: #AA9277;
+  border-top-left-radius: 9%;
+  border-top-right-radius: 9%;
+  position: relative;
+  top: -10px;
+}
+
+.date {
+  color: white;
+  text-align: left;
+  left: 2em;
+  top: 1.5em;
+  position: relative;
+  font-size: 1.7em;
+  font-weight: 900;
+  line-height: 1.4em;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  width: 50%;
+  left: 65%;
+  top: 30%;
+  transform: translate(-50%, -10%);
+  position: absolute;
+}
+
+
+h2 {
+  text-align: center;
+  /* margin: 10px 0; */
+  top: 15px;
+  position: relative;
+
+}
+
+.greeting {
+  /* 此處有問題 */
+  position: relative;
+  top: 50px;
+}
+
+button {
+  background-color: #D4B19C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #BFA596;
+}
+
+/* 此頁待調整 */
+#animalImages {
+  position: absolute;
+  top: 30%;
+  right: 25%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+#animalImages img {
+  width: calc(50% - 20px);
+  margin: 10px;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+
+#choosePetPage {
+  text-align: center;
+}
+
+#chosenPetImage {
+
+  width: 30%;
+  justify-content: center;
+
+}
+
+.animal-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.animal-container img {
+  width: 45%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .animal-container img {
+    width: 100%;
+  }
+}
+
+
+#greeting {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+}
+
+#loginButton {
+  position: absolute;
+  right: 10%;
+  top: 60%;
+}
+
+#welcome {
+  position: absolute;
+  right: 10%;
+  top: 45%;
+}
+
+#loginbox {
+  background-image: url('image/loginbackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#choose_word {
+  position: absolute;
+  top: 24%;
+  right: 8%;
+}
+
+#nextbutton {
+  position: absolute;
+  top: 80%;
+  right: 8%;
+}
+
+#inputForm,
+#searchForm {
+  max-width: 350px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input[type="date"],
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#searchResult {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

@@ -1,0 +1,214 @@
+.black {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    /*    display: none;*/
+    z-index: 11;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.sCon1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 86%;
+    height: 55vh;
+    background-color: #aa9278;
+    border-radius: 15px;
+}
+
+.sCon2 {
+    width: 86%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    /*background-color: burlywood;*/
+    /*    gap: 5%;*/
+}
+
+.sDateCon {
+    /*height: 10%;*/
+    flex: 2;
+    /*background-color: coral;*/
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sDateTitle {
+    color: white;
+    margin: 0;
+    flex: 3;
+    font-family: monospace;
+    font-size: 2.0em;
+    font-weight: 700;
+}
+
+.sSave {
+    flex: 1;
+    background-color: #c6dd90;
+    border-radius: 30px;
+    height: 50%;
+    color: white;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.1em;
+    line-height: 1.8em;
+    font-weight: 600;
+}
+
+.sTitle {
+    margin: 0;
+    font-family: monospace;
+    font-size: 1.1em;
+    line-height: 1.8em;
+    font-weight: 600;
+    display: flex;
+    flex: 15;
+}
+
+.sEdit {
+    flex: 2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sEditPic {
+    display: block;
+    width: 50%;
+    height: 50%;
+    background: url("summary/edit.png") no-repeat center;
+    background-size: contain;
+}
+
+.sSummaryCon {
+    flex: 6;
+    background-color: #e7d7b6;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.sSummaryTitleCon {
+    flex: 2;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.sSummary {
+    display: block;
+    width: 90%;
+    flex: 3;
+    border: 2px solid transparent;
+    background-color: transparent;
+    resize: none;
+}
+
+.sEmotionCon {
+    /*height: 20%;*/
+    flex: 3;
+    background-color: #e7d7b6;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.sEmotionTitleCon {
+    flex: 3;
+    width: 90%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.sEmotion {
+    width: 100%;
+    flex: 4;
+    display: flex;
+    gap: 2.5%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.sEmo {
+    display: block;
+    flex: 1;
+    z-index: 7;
+}
+
+.sEmo1 {
+    background: url("summary/emo1.png") no-repeat center;
+    background-size: contain;
+    z-index: 1;
+}
+
+.sEmo2 {
+    background: url("summary/emo2.png") no-repeat center;
+    background-size: contain;
+    --val: 2;
+}
+
+.sEmo3 {
+    background: url("summary/emo3.png") no-repeat center;
+    background-size: contain;
+    --val: 3;
+}
+
+.sEmo4 {
+    background: url("summary/emo4.png") no-repeat center;
+    background-size: contain;
+    --val: 4;
+}
+
+.sEmo5 {
+    background: url("summary/emo5.png") no-repeat center;
+    background-size: contain;
+    --val: 5;
+}
+
+.sEmoSel {
+    /*display: none;*/
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+}
+
+.sEmoSel1 {
+    background: url("summary/emo_sel1.png") no-repeat center;
+    background-size: contain;
+}
+
+.sEmoSel2 {
+    background: url("summary/emo_sel2.png") no-repeat center;
+    background-size: contain;
+}
+
+.sEmoSel3 {
+    background: url("summary/emo_sel3.png") no-repeat center;
+    background-size: contain;
+}
+
+.sEmoSel4 {
+    background: url("summary/emo_sel4.png") no-repeat center;
+    background-size: contain;
+}
+
+.sEmoSel5 {
+    background: url("summary/emo_sel5.png") no-repeat center;
+    background-size: contain;
+}
+
+.Gap_flex1 {
+    flex: 1;
+}

@@ -1,0 +1,73 @@
+.meditation{
+    display: none;
+    position: fixed;
+    /* z-index: 100; */
+    left: 35%;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+    /* color: #fff; */
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+
+.container_video {
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+@media (max-width: 56.25vh) {
+
+/*for phone view*/
+.container_phone {
+    width: 100%;
+}
+}
+
+@media (min-width: 56.25vh) {
+
+/*for desktop view*/
+.container_phone {
+    width: 56.25vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+}
+
+.title {
+display: flex;
+align-items: center;
+color: #fff;
+font-size: 1em;
+font-weight: 400;
+line-height: 2.5em;
+font-family: Arial, sans-serif;
+}
+
+.video {
+width: 100%;
+}
