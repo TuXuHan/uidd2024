@@ -1,0 +1,150 @@
+:root {
+    --border-radius: 20px;
+    --greybrown: #E9E1D4;
+}
+
+.emotionline_container {
+    display: block;
+    position: absolute;
+    width: 95%;
+    height: 45%;
+    background-color: #f7efe1;
+    z-index: 4;
+}
+
+.chartReturn {
+    display: block;
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    top: 2%;
+    z-index: 5;
+    background: url("./emotionline/return.png") no-repeat center;
+    background-size: contain;
+}
+
+.chartWrapper_1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    /*background-color: aquamarine;*/
+}
+
+.chartTitle {
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    /*background-color: coral;*/
+}
+
+.chartTitleText {
+    width: 80%;
+    height: 30%;
+    font-size: 1.5em;
+    font-family: monospace;
+    text-align: center;
+}
+
+.chartWrapper_2 {
+    display: flex;
+    flex: 6;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+
+}
+
+.cEmotionWrapper {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    gap: 6%;
+    height: 100%;
+    width: 10%;
+    border-radius: var(--border-radius);
+    background-color: var(--greybrown);
+}
+
+.cEmotion {
+    display: block;
+    flex: 1;
+}
+
+#cEmo1 {
+    background: url("./emotionline/emo1.png") no-repeat center;
+    background-size: contain;
+}
+
+#cEmo2 {
+    background: url("./emotionline/emo2.png") no-repeat center;
+    background-size: contain;
+}
+
+#cEmo3 {
+    background: url("./emotionline/emo3.png") no-repeat center;
+    background-size: contain;
+}
+
+#cEmo4 {
+    background: url("./emotionline/emo4.png") no-repeat center;
+    background-size: contain;
+}
+
+#cEmo5 {
+    background: url("./emotionline/emo5.png") no-repeat center;
+    background-size: contain;
+}
+
+.cEmotionDummy {
+    flex: 0;
+}
+
+.chartWrapper_3 {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    border: medium solid var(--greybrown);
+    border-radius: var(--border-radius);
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.chartWrapper_A {
+    width: 95%;
+    height: 95%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+}
+
+.chartWrapper_A::-webkit-scrollbar {
+    display: none;
+}
+
+.chartWrapper_B {
+    height: 100%;
+}
+
+#mainChart {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*#mainChart circle[fill="#aa9277"] {
+    fill: #AAAAAA !important;
+    scroll-snap-align: center !important;
+}*/
+
+/*#mainChart rect[rx="10"] {
+    transform: scale(1.1,1);
+    width: 15vw;
+}*/
+
+/*#mainChart text {
+    z-index: 3 !important;
+}*/
