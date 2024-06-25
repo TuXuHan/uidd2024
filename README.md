@@ -8,3 +8,4 @@
 
 - Therapet_0616 is the new version
 - ```main_0616.py``` openai problems fixed
+- ```Therapet_final``` and ```main_final.py``` are added
