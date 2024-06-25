@@ -1,0 +1,441 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheraPet</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="chat.css" />
+    <link rel="stylesheet" type="text/css" href="calendar.css" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="stylesheet" type="text/css" href="chart.css" />
+    <link rel="stylesheet" type="text/css" href="summary.css" />
+    <link rel="stylesheet" type="text/css" href="task.css" />
+    <link rel="stylesheet" type="text/css" href="./Task_CSS_JS/breath.css" />
+    <link rel="stylesheet" type="text/css" href="./Task_CSS_JS/drink.css" />
+    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css" />
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link
+      rel="stylesheet"
+      href="owlcarousel/assets/owl.theme.default.min.css"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+  </head>
+
+  <body class="body" bgcolor="#E9E1D4">
+
+
+    <div class="overlay" id="overlay">
+      <div class="popup">
+        <div onclick="CloseModal()" class="CloseIcon">&#10060;</div>
+        <!-- 深呼吸 -->
+        <div class="Container-deapBreath">
+          <div class="icon-deapBreath">&#x1F624;</div>
+          <div class="detail-deapBreath">Take a Deap Breath</div>
+          <button class="go-deapBreath" onclick="openCountdown()">GO</button>
+    
+        </div>
+        <!-- 喝水 -->
+        <div class="Container-deapBreath">
+          <div class="icon-deapBreath">&#x1F6B0;</div>
+          <div class="detail-deapBreath">Drink Some Water</div>
+          <button class="go-deapBreath" onclick="openCustomPopup()">GO</button>
+        </div>
+  
+        <!-- 冥想 -->
+        <div class="Container-deapBreath">
+          <div class="icon-deapBreath">&#x1F62A;</div>
+          <div class="detail-deapBreath">Meditation</div>
+          <button class="go-deapBreath" onclick="openMeditation()">GO</button>
+        </div> 
+        
+        <!-- 拉伸 -->
+        <div class="Container-deapBreath">
+          <div class="icon-deapBreath">&#x1F483;</div>
+          <div class="detail-deapBreath">Do some stretch</div>
+          <button class="go-deapBreath" onclick="openyoutube()"">GO</button>
+        </div>            
+      </div>
+  <!-- 伸展 -->
+      <div id="myModal" class="modal">
+        <div class='container_video'>
+          <t1 class='title'>1. 15分鐘全身拉伸</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/bGDs6-_HkT4?si=Fv9g2VNyVEGIihFv&amp;start=2"
+            class="video1" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <t1 class='title'>2. 10分鐘全身拉伸</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/EvF_Jnf9jwg?si=ZRhvUUeUQ3rCwdCx" title="video2"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <t1 class='title'>3. 10分肩頸拉伸</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/8Cdu8dT2cS8?si=0TVqAiDDyoU2EVX2"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+  <!-- 深呼吸 -->
+      <div id="breath-container">
+        <div id="countdownModal" class="countdown-container">
+            <div class="countdown-content">
+               
+                <div id="hale">Inhale</div>
+                <div id="image-container">
+                    <img id="dynamicImage" src="./Task_CSS_JS/breath_img/0.png" alt="Dynamic Image">
+                </div>
+                <div id="countdown">60</div>
+                <span class="close-btn" onclick="closeCountdown()">Done</span>
+            </div>
+        </div>      
+      </div>
+  <!-- 喝水 -->
+      <div id="customImagePopup" class="custom-overlay">
+        <div class="custom-popup">
+          <span class="custom-close-btn" onclick="closeCustomPopup()">&times;</span>
+          <div class="custom-image-container">
+            <img id="customDynamicImage" src="./drink_img/cup/0.png" alt="Dynamic Image">
+          </div>
+          <button class="custom-change-image-button" onclick="changeCustomImage()">+ 200 ml </button>
+        </div>
+      </div>
+  <!-- 冥想 -->
+      <div id="meditation" class="meditation">
+        <div class='container_video'>
+          <t1 class='title'>1. 5分鐘冥想</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/watch?v=inpok4MKVLM&list=PLQiGxGHwiuD1kdxsWKFuhE0rITIXe-7yC&index=2&t=32s"
+            class="video1" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <t1 class='title'>2. 10分鐘冥想</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/watch?v=O-6f5wQXSu8&list=PLQiGxGHwiuD1kdxsWKFuhE0rITIXe-7yC&index=1" title="video2"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <t1 class='title'>3. 15分鐘冥想</t1>
+          <iframe height="315" src="https://www.youtube.com/embed/watch?v=itZMM5gCboo&list=PLQiGxGHwiuD1kdxsWKFuhE0rITIXe-7yC&index=3"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="container_phone">
+      <div id="loginbox">
+        <div id="loginContainer">
+          <img src="image/logo.png" id="logo" class="logo" />
+          <h2 id="welcome">Welcome to Therapet.</h2>
+          <p id="greeting">We wish you a nice day!</p>
+          <button id="loginButton" onclick="toggleSignIn()">
+            Sign in with Google
+          </button>
+          <button id="logoutButton" style="display: none" onclick="signOut()">
+            Logout
+          </button>
+        </div>
+        <h2 id="displayName" style="display: none"></h2>
+        <div id="choosePetPage" style="display: none">
+          <p id="choose_word">
+            Please choose your own pet from the animals below.
+          </p>
+          <div id="animalImages" class="animal-container">
+            <img
+              src="image/bear.png"
+              alt="Bear"
+              onclick="selectAnimal('Bear')"
+            />
+            <img src="image/cat.png" alt="Cat" onclick="selectAnimal('Cat')" />
+            <img
+              src="image/hamster.png"
+              alt="Hamster"
+              onclick="selectAnimal('Hamster')"
+            />
+            <img
+              src="image/otter.png"
+              alt="Otter"
+              onclick="selectAnimal('Otter')"
+            />
+            <img
+              src="image/puppy.png"
+              alt="Puppy"
+              onclick="selectAnimal('Puppy')"
+            />
+            <img
+              src="image/rabbit.png"
+              alt="Rabbit"
+              onclick="selectAnimal('Rabbit')"
+            />
+          </div>
+          <button id="nextbutton" onclick="nextPage()">Next</button>
+        </div>
+        <div id="petNamingPage" style="display: none">
+          <h2>Your Chosen Pet</h2>
+          <img src="" alt="Chosen Pet" id="chosenPetImage" /><br />
+          <label for="petName">Name Your Pet:</label>
+          <input type="text" id="petName" placeholder="Enter Pet Name" />
+          <button id="nextbutton" onclick="savePetName()">Next</button>
+        </div>
+      </div>
+      <!-- login end -->
+      <div id="homebox">
+        <div id="mySidebar" class="sidebar">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+            >&times;</a
+          >
+          <a href="#">About us</a>
+          <a href="#">Contact us</a>
+          <a href="#" onclick="signOut()">Log out</a>
+        </div>
+        <nav class="nav">
+          <div class="nav_left">
+            <button id="openbtn" onclick="openSidebar()">&#9776;</button>
+            <button id="backhomebtn">▶</button>
+          </div>
+
+          <div class="nav_middle">
+            <img src="title_middle.png" />
+          </div>
+        </nav>
+
+        <div class="pages">
+          <div class="page page_home">
+            <img src="" alt="Pet" id="homePetImage" onclick='toggleImage()'/>
+          </div>
+
+          <div class="page page_chat">
+            <div class="chat_space">
+              <ul class="chatbox">
+                <li class="chat_box_footer"></li>
+              </ul>
+              <div class="chat_pet">
+                <img src="" alt="Pet" id="chatPetImage" />
+              </div>
+            </div>
+            <div id="chat_input">
+              <div class="textbar">
+                <textarea
+                  type="text"
+                  placeholder="Talk to your pet"
+                  spellcheck="false"
+                  rows="1"
+                  oninput="textbar_input()"
+                ></textarea>
+              </div>
+              <button type="submit" class="mic"></button>
+            </div>
+            <div class="chat_logo"></div>
+          </div>
+          <div class="page page_diary">
+            <div class="calendar_container"><div class="calendar"></div></div>
+            <div class="emotionline_container">
+              <div class="chartReturn"></div>
+              <div class="chartWrapper_1">
+                <div class="chartTitle">
+                  <div class="chartTitleText">Emotion Line</div>
+                </div>
+                <div class="chartWrapper_2">
+                  <div class="chartWrapper_3">
+                    <div class="chartWrapper_A">
+                      <div class="chartWrapper_B">
+                        <div id="mainChart"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cEmotionWrapper">
+                    <div class="cEmotionDummy"></div>
+                    <div class="cEmotion" id="cEmo1"></div>
+                    <div class="cEmotion" id="cEmo2"></div>
+                    <div class="cEmotion" id="cEmo3"></div>
+                    <div class="cEmotion" id="cEmo4"></div>
+                    <div class="cEmotion" id="cEmo5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='black'>
+
+              <div class="sCon1">
+                <div class="sCon2">
+                  <div class="Gap_flex1"></div>
+                  <div class="sDateCon">
+                    <p class="sDateTitle"></p>
+                    <div class="sSave">Done</div>
+                  </div>
+                  <div class="sEmotionCon">
+                    <div class="sEmotionTitleCon">
+                      <p class="sTitle">Today's mood</p>
+                    </div>
+                    <div class="sEmotion">
+                      <div class="dummy"></div>
+                      <div class="sEmo sEmo1">
+                        <div class="sEmoSel sEmoSel1"></div>
+                      </div>
+                      <div class="sEmo sEmo2">
+                        <div class="sEmoSel sEmoSel2"></div>
+                      </div>
+                      <div class="sEmo sEmo3">
+                        <div class="sEmoSel sEmoSel3"></div>
+                      </div>
+                      <div class="sEmo sEmo4">
+                        <div class="sEmoSel sEmoSel4"></div>
+                      </div>
+                      <div class="sEmo sEmo5">
+                        <div class="sEmoSel sEmoSel5"></div>
+                      </div>
+                      <div class="dummy"></div>
+                    </div>
+                    <div class="Gap_flex1"></div>
+        
+                  </div>
+                  <div class="Gap_flex1"></div>
+                  <div class="sSummaryCon">
+                    <div class="sSummaryTitleCon">
+                      <p class="sTitle">Summary</p>
+                      <div class="sEdit"></div>
+                    </div>
+                    <textarea class="sSummary"></textarea>
+                    <div class="Gap_flex1"></div>
+                  </div>
+                  <div class="Gap_flex1"></div>
+                </div>
+              </div>
+            </div>
+        
+
+            <div class="bottom-sheet">
+              <div class="sheet-header">
+                <div class="drag-handle"></div>
+              </div>
+              <div class="sheet-content">
+                <div class="taskUI-background">
+                  <div class="date">June 11</div>
+                  <div class="dailyTask">
+                    <img src="diary/DailyTasks.png" class="TaskImg" />
+                    <img src="diary/OrangeButton.png" class="TasksButton" onclick="OpenModal()"/>
+                    <t1 class="ButtonText">2/3</t1>
+                  </div>
+
+                  <div class="emotionLine">
+                    <img src="diary/EmotionLine.png" class="LineImg" />
+                    <img src="diary/BlueButton.png" class="LineButton" />
+                    <t1 class="ButtonText">See all</t1>
+                  </div>
+
+                  <div class="dialyDiary">
+                    <img src="diary/DailyDiary.png" class="DiaryImg" />
+                    <img src="diary/GreenButton.png" class="DiaryButton" />
+                    <t1 class="ButtonText">Write</t1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <div class="page_button pb_home"></div>
+          <div class="page_button pb_chat"></div>
+          <div class="page_button pb_diary"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+    <script src="chat.js"></script>
+    <script src="diary.js"></script>
+    <script src="calendar.js"></script>
+    <script src="chart.js"></script>
+    <script src="summary.js"></script>
+    <script src="./Task_CSS_JS/countdown.js"></script>
+    <script>
+      function OpenModal() {
+        let element = document.getElementById('overlay')
+        element.style.display = 'block'
+        let popupElements = document.getElementsByClassName('popup');
+        if (popupElements.length > 0) {
+            let popupElement = popupElements[0];
+            popupElement.style.display = 'block';
+        }
+  
+        let modalElements = document.getElementsByClassName('modal');
+        if (modalElements.length > 0) {
+            let modalElement = modalElements[0];
+            modalElement.style.display = 'none';
+        }
+        let meditationElements = document.getElementsByClassName('meditation');
+        if (meditationElements.length > 0) {
+            let meditationElement = meditationElements[0];
+            meditationElement.style.display = 'none';
+        }
+        // element = document.getElementById('popup')
+        // element.style.display = 'block'
+      }
+  
+      function CloseModal() {
+        let element = document.getElementById('overlay')
+        element.style.display = 'none'
+      }
+  
+      function openyoutube() {
+        let popupElements = document.getElementsByClassName('popup');
+        if (popupElements.length > 0) {
+            let popupElement = popupElements[0];
+            popupElement.style.display = 'none';
+        }
+  
+        let modalElements = document.getElementsByClassName('modal');
+        if (modalElements.length > 0) {
+            let modalElement = modalElements[0];
+            modalElement.style.display = 'block';
+        }
+      }
+  
+      function openMeditation() {
+        let popupElements = document.getElementsByClassName('popup');
+        if (popupElements.length > 0) {
+            let popupElement = popupElements[0];
+            popupElement.style.display = 'none';
+        }
+  
+        let modalElements = document.getElementsByClassName('meditation');
+        if (modalElements.length > 0) {
+            let modalElement = modalElements[0];
+            modalElement.style.display = 'block';
+        }
+      }
+  
+  function closeyoutube() {
+    let modalElements = document.getElementsByClassName('overlay');
+      if (modalElements.length > 0) {
+          let modalElement = modalElements[0];
+          modalElement.style.display = 'none';
+      }
+  }
+  
+  // 點擊視窗外部也能關閉視窗
+  window.onclick = function(event) {
+      if (event.target == document.getElementById('overlay')) {
+          closeyoutube();
+          closeCountdown();
+          closeCustomPopup();
+      }
+  }
+  
+    
+    </script>
+
+    <script src="./Task_CSS_JS/drink.js"></script>
+    <!-- are these needed? maybe not-->
+    <script src="app.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="carousel/Fully-Responsive-Flexible-jQuery-Carousel-Plugin-slick/slick/slick.js"></script>
+  
+</html>
